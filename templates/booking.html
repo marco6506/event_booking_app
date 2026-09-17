@@ -176,18 +176,18 @@
     <div id="seats-container" class="seats-grid"></div>
 
     <div class="actions">
-        <button id="btn-prenota" class="btn btn-primary" disabled onclick="conferma('book')">
+        <button id="btn-prenota" class="btn btn-primary" type="button" disabled onclick="conferma('book')">
             ✅ Conferma Prenotazione
         </button>
         {% if current_user.is_admin() %}
-        <button id="btn-riserva" class="btn btn-reserve" disabled onclick="conferma('reserve')">
+        <button id="btn-riserva" class="btn btn-reserve" type="button" disabled onclick="conferma('reserve')">
             🔒 Riserva Posti
         </button>
-        <button id="btn-abbona" class="btn" style="background:#8b5cf6;color:white;" disabled onclick="conferma('abbona')">
+        <button id="btn-abbona" class="btn" type="button" style="background:#8b5cf6;color:white;" disabled onclick="conferma('abbona')">
             🎫 Abbona Posti
         </button>
         {% endif %}
-        <button id="btn-cancella" class="btn btn-delete" disabled onclick="confermaCancella()">
+        <button id="btn-cancella" class="btn btn-delete" type="button" disabled onclick="confermaCancella()">
             🗑️ Cancella Selezionati
         </button>
     </div>
@@ -208,8 +208,8 @@
         <h3 id="modal-titolo">Nome della prenotazione</h3>
         <input type="text" id="input-nome" placeholder="Es. Mario Rossi" maxlength="50">
         <div class="modal-actions">
-            <button class="btn-cancel" onclick="chiudiModal()">Annulla</button>
-            <button class="btn-confirm" onclick="eseguiAzione()">Conferma</button>
+            <button class="btn-cancel" type="button" onclick="chiudiModal()">Annulla</button>
+            <button class="btn-confirm" type="button" onclick="eseguiAzione()">Conferma</button>
         </div>
     </div>
 </div>
@@ -231,9 +231,27 @@ function parseCorridoi(str) {
 
 function loadSeats() {
     fetch(`/api/seats/${EVENTO_ID}`)
-        .then(r => r.json())
+        .then(async response => {
+            const data = await response.json().catch(() => null);
+            if (!response.ok) {
+                const message = data && data.error ? data.error : `Errore HTTP ${response.status}`;
+                throw new Error(message);
+            }
+            if (!Array.isArray(data)) {
+                throw new Error('Risposta del server non valida.');
+            }
+            return data;
+        })
         .then(data => {
             renderSeats(data);
+        })
+        .catch(error => {
+            console.error('Errore caricamento posti:', error);
+            const container = document.getElementById('seats-container');
+            container.innerHTML = `<p style="color:#b91c1c; font-weight:600;">Impossibile caricare i posti: ${error.message}</p>`;
+            selectedSeats = [];
+            selectedToDelete = [];
+            updateButtons();
         });
 }
 
