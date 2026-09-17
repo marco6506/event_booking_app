@@ -291,3 +291,208 @@
   .booking-container, .modal-box, .sending-box { animation: none; }
   .seat, .btn { transition: none !important; }
 }
+
+/* ===== PREMIUM FESTIVAL THEME ===== */
+:root {
+  --festival-bg-1: #f7f5ff;
+  --festival-bg-2: #eefbf7;
+  --festival-indigo: #5b4ef5;
+  --festival-violet: #8b5cf6;
+  --festival-emerald: #18b88d;
+  --festival-orange: #ff8a3d;
+  --festival-slate: #1f2937;
+  --festival-gray: #475569;
+  --festival-line: rgba(148, 163, 184, 0.18);
+  --festival-white: rgba(255,255,255,0.8);
+  --festival-shadow: 0 18px 44px rgba(31, 41, 55, 0.12);
+}
+
+body {
+  background:
+    radial-gradient(circle at top left, rgba(91, 78, 245, 0.12), transparent 32%),
+    radial-gradient(circle at top right, rgba(24, 184, 141, 0.12), transparent 28%),
+    linear-gradient(180deg, var(--festival-bg-1), #ffffff 38%, var(--festival-bg-2));
+  color: var(--festival-slate);
+}
+
+.navbar {
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.04);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.nav-brand a {
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  font-size: 1.2rem;
+  color: var(--festival-slate);
+  text-decoration: none;
+}
+
+.nav-links {
+  gap: 10px;
+}
+
+.nav-links .btn,
+.btn {
+  border-radius: 14px !important;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  transition: all 0.2s ease;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.09);
+}
+
+.nav-links .btn-primary,
+.btn-primary {
+  background: linear-gradient(135deg, var(--festival-indigo), var(--festival-violet)) !important;
+  color: white !important;
+}
+
+.nav-links .btn-secondary,
+.btn-secondary {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid var(--festival-line);
+  color: var(--festival-slate);
+}
+
+.nav-links .btn-guide {
+  background: linear-gradient(135deg, #14b8a6, #0f766e);
+  color: white;
+}
+
+.container {
+  padding-top: 28px;
+  padding-bottom: 40px;
+}
+
+.event-header {
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.9), rgba(239,245,255,0.9)),
+    linear-gradient(120deg, rgba(91,78,245,0.08), rgba(24,184,141,0.08));
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 30px;
+  box-shadow: var(--festival-shadow);
+}
+
+.event-header h2 {
+  color: var(--festival-slate) !important;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+}
+
+.event-meta {
+  font-weight: 700;
+  color: #334155 !important;
+}
+
+.screen {
+  background: linear-gradient(90deg, #4f46e5, #7c3aed, #14b8a6);
+  border-radius: 999px;
+  box-shadow: 0 16px 30px rgba(91, 78, 245, 0.24);
+  letter-spacing: 0.22em;
+  font-weight: 800;
+}
+
+.booking-summary {
+  background: rgba(255,255,255,0.75);
+  border: 1px solid var(--festival-line);
+  border-radius: 18px;
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.05);
+}
+
+.summary-chip {
+  background: linear-gradient(135deg, #ffffff, #eef2ff);
+  border: 1px solid rgba(148,163,184,0.12);
+  border-radius: 999px;
+  font-weight: 800;
+  color: #334155;
+}
+
+#seats-container {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(148,163,184,0.12);
+  border-radius: 28px;
+  box-shadow: 0 16px 38px rgba(15, 23, 42, 0.08);
+}
+
+.seat {
+  border-radius: 16px !important;
+}
+
+.seat.libero {
+  background: linear-gradient(145deg, #ffffff, #eef2ff);
+  border-color: rgba(91,78,245,0.25) !important;
+  color: #4338ca !important;
+}
+
+.seat.libero:hover {
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 16px 28px rgba(91,78,245,0.18);
+}
+
+.seat.selezionato {
+  background: linear-gradient(135deg, #14b8a6, #0f766e) !important;
+  box-shadow: 0 16px 26px rgba(20, 184, 141, 0.35);
+}
+
+.seat.mio {
+  background: linear-gradient(135deg, #38bdf8, #2563eb);
+}
+
+.seat.riservato,
+.seat.riservato-admin {
+  background: linear-gradient(135deg, #fb923c, #f97316);
+}
+
+.seat.abbonato,
+.seat.abbonato-admin {
+  background: linear-gradient(135deg, #a78bfa, #7c3aed);
+}
+
+.seat.admin-canc {
+  background: linear-gradient(135deg, #60a5fa, #2563eb);
+}
+
+.actions {
+  background: rgba(255,255,255,0.82);
+  border: 1px solid rgba(148,163,184,0.16);
+  border-radius: 24px;
+  box-shadow: 0 18px 40px rgba(31,41,55,0.12);
+}
+
+.btn-primary,
+.btn-reserve,
+.btn-delete,
+.btn-confirm {
+  box-shadow: 0 12px 22px rgba(15, 23, 42, 0.12);
+}
+
+.btn-delete {
+  background: linear-gradient(135deg, #ef4444, #b91c1c) !important;
+}
+
+.modal-box,
+.sending-box {
+  border-radius: 24px !important;
+  background: rgba(255,255,255,0.9) !important;
+  box-shadow: 0 30px 80px rgba(15,23,42,0.22) !important;
+}
+
+@media (max-width: 640px) {
+  .nav-links {
+    gap: 6px;
+  }
+
+  .nav-links .btn {
+    padding: 10px 12px !important;
+    font-size: 0.75rem !important;
+  }
+
+  .actions .btn {
+    flex: 1 1 44%;
+  }
+}
